@@ -1,0 +1,32 @@
+{
+  "name": "dweik/laravel-redis-stream",
+  "description": "Laravel redis stream",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "version": "1.0.0",
+  "keywords": [
+    "laravel", "redis", "stream", "channel", "xread", "xadd", "microservice", "command", "artisan"
+  ],
+  "authors": [
+    {
+      "name": "Abdelqader osama",
+      "email": "abdelqader.aldweik@tarjama.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "laravel/framework": "^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "LaravelStream\\Redis\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "LaravelStream\\Redis\\StreamServiceProvider"
+      ]
+    }
+  }
+}
