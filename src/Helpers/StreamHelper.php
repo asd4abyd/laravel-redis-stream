@@ -50,9 +50,9 @@ class StreamHelper
     public function getRedis(): Connection
     {
         $config = config('database.redis');
-        $connectionName = config('streaming.connection');
-        $driveName = config('streaming.drive', 'phpredis');
-
+        $connectionName = config('streaming.redis.connection');
+        $driveName = config('streaming.redis.drive', 'phpredis');
+       
         $redisManager = new  RedisManager(app(), $driveName, $config);
 
         return $redisManager->connection($connectionName);
