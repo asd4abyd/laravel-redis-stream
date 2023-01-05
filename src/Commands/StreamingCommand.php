@@ -52,8 +52,6 @@ class StreamingCommand extends Command
         $this->logErrors = config('streaming.log_errors', true);
         $this->logErrorChannel = config('streaming.log_error_channel');
         $this->channels = config('streaming.channels', []);
-
-        $this->redis = $this->getRedis();
     }
 
     /**
@@ -63,6 +61,8 @@ class StreamingCommand extends Command
      */
     public function handle()
     {
+        $this->redis = $this->getRedis();
+
         $blockTimeout = config('streaming.block_timeout', null);
 
         if (count($this->channels) == 0) {
