@@ -11,12 +11,30 @@ Require this package with composer using the following command:
 composer require dweik/laravel-redis-stream
 ```
 
+___
+#### Laravel
 Then you need to publish the config files by executing the following command
 ```bash
 php artisan vendor:publish --tag=laravel-redis-stream-config
 ```
 
-You will find a new config file `config/streaming.php`, so there you have to set up the Redis connection under the **Redis** key.
+___
+#### lumen
+You need to add the follow line on `bootstrap/app.php` file:
+```php
+$app->register(LaravelStream\Redis\StreamServiceProvider::class);
+```
+and make sure that you loaded ***Redis*** by add the follow line _(if exists no need to add)_
+```php
+$app->register(Illuminate\Redis\RedisServiceProvider::class);
+```
+_**NOTE** if you need more information to how setup redis on lumen you can check the official website by a [click here](https://lumen.laravel.com/docs/master/cache)_   
+
+Then you need to copy the streaming config file from `vendor/dweik/laravel-redis-stream/config/streaming.php` to
+`config/streaming.php`  
+___
+
+On `config/streaming.php` file, you need to set up the Redis connection under the **redis** key.
 then you need to define the names of the channels by assigning handler classes as below example:
 - note: *We prefer use **phpredis** driver*.
 

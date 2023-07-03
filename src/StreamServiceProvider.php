@@ -12,6 +12,20 @@ class StreamServiceProvider extends ServiceProvider
 {
     public function register()
     {
+        $configPath = __DIR__ . '/../config/streaming.php';
+
+        if (function_exists('config_path')) {
+            $publishPath = config_path('streaming.php');
+        } else {
+            $publishPath = base_path('config/streaming.php');
+        }
+
+        if(file_exists($publishPath)){
+            $configPath = $publishPath;
+        }
+
+        $this->mergeConfigFrom($configPath, 'streaming');
+
         $this->app->bind('stream', function () {
             return new StreamHelper();
         });
@@ -24,8 +38,14 @@ class StreamServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (function_exists('config_path')) {
+            $publishPath = config_path('streaming.php');
+        } else {
+            $publishPath = base_path('config/streaming.php');
+        }
+
         $this->publishes([
-            __DIR__.'/../config/streaming.php' => config_path('streaming.php')
+            __DIR__.'/../config/streaming.php' => $publishPath
         ], 'laravel-redis-stream-config');
 
         $this->commands([
