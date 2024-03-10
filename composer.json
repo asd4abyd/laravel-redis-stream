@@ -15,7 +15,7 @@
   ],
   "require": {
     "php": ">=7.4",
-    "illuminate/redis": "^11.0"
+    "illuminate/redis": "^10.0.0"
   },
   "autoload": {
     "psr-4": {
