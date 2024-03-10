@@ -3,7 +3,7 @@
   "description": "Laravel redis stream",
   "minimum-stability": "stable",
   "license": "MIT",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "keywords": [
     "laravel", "redis", "stream", "channel", "xread", "xadd", "microservice", "command", "artisan"
   ],
