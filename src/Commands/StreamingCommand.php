@@ -97,12 +97,9 @@ class StreamingCommand extends Command
                             $listeners[$channelName] = $messageNumber;
 
                             $this->firePayload($this->channels[$channelName], $channelName, $messageNumber, $payload);
+
+                            $this->setKey($channelName, $messageNumber);
                         }
-                    }
-
-
-                    if (count($messages)) {
-                        $this->setKey($channelName, $listeners[$channelName]);
                     }
                 }
             }
